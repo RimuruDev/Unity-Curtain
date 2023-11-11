@@ -1,3 +1,5 @@
+[English](README.md) | [Русский](README_RU.md)
+
 # Curtain for Unity
 
 ![image](https://github.com/RimuruDev/Unity-Curtain/assets/85500556/d72dde3a-34f5-4dd6-be83-a23961b0eeff)
