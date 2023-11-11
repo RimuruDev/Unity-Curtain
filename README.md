@@ -2,6 +2,26 @@
 
 ![image](https://github.com/RimuruDev/Unity-Curtain/assets/85500556/d72dde3a-34f5-4dd6-be83-a23961b0eeff)
 
+## How to use
+- ..
+- ..
+- ..
+
+## Usefulness
+- ..
+- ..
+- ..
+
+## Docs
+- ..
+- ..
+- ..
+
+## Customize
+- ..
+- ..
+- ..
+
 ## Dependencies:
 - NaughtyAttributes: [Asset Store](https://assetstore.unity.com/packages/tools/utilities/naughtyattributes-129996), [GitHub](https://assetstore.unity.com/packages/tools/utilities/naughtyattributes-129996)
 - DoTween: [Asset Store](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
