@@ -1,97 +1,92 @@
-# Unity-Curtain
+# Curtain for Unity
 
 ![image](https://github.com/RimuruDev/Unity-Curtain/assets/85500556/d72dde3a-34f5-4dd6-be83-a23961b0eeff)
 
-## How to use
-- ..
-- ..
-- ..
+## Overview
 
-## Usefulness
-- ..
-- ..
-- ..
+The Curtain system in Unity is a robust and versatile tool designed to manage transitions and loading screens across
+your games or applications. It serves as a 'curtain', hiding the scene changes or loading processes that happen in the
+background, providing a seamless experience for the player.
 
-## Docs
-- ..
-- ..
-- ..
+## Why Use Curtain?
 
-## Customize
-- ..
-- ..
-- ..
+Using Curtain in your Unity projects can greatly simplify the management of scene transitions and loading sequences. It
+handles the display of a full-screen overlay, which can be customized and animated, to mask the loading operations that
+may distract the user or disrupt the gameplay experience.
+
+## Features
+
+- **Animated Transitions**: Curtain can smoothly transition in and out with customizable animations.
+- **Callback Support**: Execute any post-animation logic using callbacks, perfect for loading scenes or resources in the
+  background.
+- **Customizable Appearance**: Easily modify the look and feel of your curtain through Unity's ScriptableObject to match
+  your game's aesthetic.
+- **Delay Control**: Specify delays for hiding the curtain, allowing for flexible timing with your game's loading
+  processes.
+
+## Installation
+
+1. Clone the repository or download the latest release.
+2. Import the Curtain package into your Unity project.
+3. Drag and drop the `CurtainView` prefab onto your canvas in the desired scene.
+
+## Usage
+
+First, ensure that your scene contains an instance of `CurtainView`, and that the `CurtainService` is properly
+initialized and injected where you need to control the curtain.
+
+### Showing the Curtain
+
+Invoke `curtainService.ShowCurtain()` to cover the screen. This is typically done just before you start a loading
+operation.
+
+```csharp
+curtainService.ShowCurtain(isAnimated: true, callback: () =>
+{
+    // This block of code will execute after the curtain has fully appeared.
+    // You can start loading your scene or resources here.
+});
+```
+
+## Hiding the Curtain
+
+Once your loading operation is complete, call curtainService.HideCurtain() to remove the curtain and reveal the updated
+content.
+
+```csharp
+curtainService.HideCurtain(isAnimated: true, callback: () =>
+{
+    // This code will execute after the curtain has fully disappeared.
+    // This is the perfect place to transition to a new scene or perform other post-loading operations.
+});
+```
+
+## Delayed Hiding
+
+If you need to keep the curtain displayed for a set amount of time (for example, to show a loading animation or a
+branding screen), you can use the delayed hide function.
+
+```csharp
+// Assuming you have a curtainConfig object with a HideDelay property
+curtainService.HideCurtain(curtainConfig.HideDelay, () =>
+{
+    // Code to execute after the delay and the curtain has been hidden.
+});
+```
 
 ## Dependencies:
+
 - NaughtyAttributes: [Asset Store](https://assetstore.unity.com/packages/tools/utilities/naughtyattributes-129996), [GitHub](https://assetstore.unity.com/packages/tools/utilities/naughtyattributes-129996)
 - DoTween: [Asset Store](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
 - Zenject: [Asset Store](https://assetstore.unity.com/packages/tools/utilities/extenject-dependency-injection-ioc-157735), [GitHub](https://github.com/modesttree/Zenject)
 
-# ..
-![image](https://github.com/RimuruDev/Unity-Curtain/assets/85500556/8b7e6feb-5f5c-4174-a4ca-f1e0d6a9955e)
+## Contributing
 
-# Curtain for Unity
+Your contributions are welcome! If you have any suggestions for improving this utility, please feel free to fork the
+repository, make your changes, and submit a pull request.
 
-## Overview
-Curtain is a utility system designed to manage loading screens in Unity applications. It provides an easy way to display a full-screen curtain that obscures the view while the level or scene is being loaded or constructed in the background.
+## License
 
-## Features
-- Smoothly show and hide the loading curtain with optional animation.
-- Highly customizable through Unity's ScriptableObject architecture.
-- Supports delayed curtain hiding to synchronize with your loading processes.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Installation
-To integrate the Curtain system into your Unity project, follow these steps:
-1. Clone the repository or download the latest release.
-2. Import the Curtain package into your Unity project.
-3. Add the `CurtainView` prefab to your canvas.
-
-## Usage
-1. Initialize the `StaticDataService` and `CurtainService` in your bootstrapper or BootState class.
-2. Call `curtainService.ShowCurtain()` to display the curtain.
-3. Once loading is complete, use `curtainService.HideCurtain()` to hide the curtain.
-
-## Example
-```csharp
-public sealed class Bootstrapper : MonoBehaviour
-{
-    private ICurtainService curtainService;
-    private IStaticDataService staticData;
-
-    [Inject]
-    private void Constructor(ICurtainService curtainService, IStaticDataService staticData)
-    {
-        this.curtainService = curtainService;
-        this.staticData = staticData;
-    }
-
-    private void Awake()
-    {
-        // Initialize services
-        staticData.Init();
-        curtainService.Init();
-    }
-
-    private void Start()
-    {
-        // Show the curtain
-        curtainService.ShowCurtain();
-    }
-
-    private void Update()
-    {
-        // Toggle curtain with keyboard input for demonstration
-        if (Input.GetKeyDown(KeyCode.S))
-            curtainService.ShowCurtain();
-
-        if (Input.GetKeyDown(KeyCode.H))
-            HideCurtain();
-    }
-
-    private void HideCurtain()
-    {
-        var curtainConfig = staticData.ForCurtain();
-        curtainService.HideCurtain(curtainConfig.HideDelay, () => Debug.Log("Curtain hidden"));
-    }
-}
-```
+### Developed by RimuruDev
