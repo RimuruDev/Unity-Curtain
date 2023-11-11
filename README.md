@@ -26,7 +26,8 @@ may distract the user or disrupt the gameplay experience.
 - **Delay Control**: Specify delays for hiding the curtain, allowing for flexible timing with your game's loading
   processes.
 
-## Installation
+
+## Installation << (Obsolete!)
 
 1. Clone the repository or download the latest release.
 2. Import the Curtain package into your Unity project.
